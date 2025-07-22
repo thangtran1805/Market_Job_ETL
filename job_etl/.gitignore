@@ -1,0 +1,9 @@
+# Databases
+*.duckdb
+
+# .env venv
+.env
+venv/
+
+# drawio file
+*.drawio
