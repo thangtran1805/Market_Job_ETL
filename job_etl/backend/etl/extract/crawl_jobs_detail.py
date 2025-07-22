@@ -52,7 +52,7 @@ def extract_job_details(job_ids):
             try:
                 response = requests.get(url, headers=HEADERS, params=search_query)
                 if response.status_code == 200:
-                    job_detail = response.json()
+                    job_detail = response.json()['data']
                     results.append(job_detail)
                     break
                 elif response.status_code == 429:

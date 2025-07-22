@@ -21,10 +21,12 @@ def extract_job_salary(job_titles,locations):
             try:
                 response = requests.get(url,headers=HEADERS,params=search_query)
                 if response.status_code == 200:
-                    salary_info = response.json()
-                    salary_info['job_title'] = title
-                    salary_info['location'] = location
-                    results.append(salary_info)
+                    data = response.json().get('data',[])
+                    if data:
+                        for item in data:
+                            item['job_title'] = title
+                            item['location'] = location
+                            results.append(data)
                 else:
                     print(f'Failed to get salary for {title} in {location}')
             except Exception as e:
